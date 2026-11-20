@@ -1,3 +1,10 @@
 body {
-    background: blue;
+    background: #1d293d;
+}
+
+
+.displayText {
+    font-size: 24px;
+    color: #fff;
+    white-space: pre-line;
 }
