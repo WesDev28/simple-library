@@ -25,7 +25,6 @@ function addBookToLibrary() {
 let myObjStr = JSON.stringify(myLibraryObj[0,1,2].author );
 
 for (const i in myLibraryObj){
-    displayText.textContent += "\n"
     const obj = myLibraryObj[i]
     for (const [_key, values] of Object.entries(obj)){
         console.log(_key, values)
@@ -33,6 +32,7 @@ for (const i in myLibraryObj){
 
     }
     displayText.textContent += "\n"
+
 }
 
 // displayText.textContent = myLibraryObj.read;
