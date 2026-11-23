@@ -1,33 +1,43 @@
 const displayText = document.querySelector(".displayText")
 
-const myLibraryObj = [
+let myLibraryArray = [
 
-  { title: "The Hobbit", author: "J.R.R. Tolkien", pages: 310, read: true, uniqueId: crypto.randomUUID() },
-  { title: "Dune", author: "Frank Herbert", pages: 412, read: false, uniqueId: crypto.randomUUID() },
-  { title: "1984", author: "George Orwell", pages: 328, read: true, uniqueId: crypto.randomUUID()}
+  { title: "The Hobbit", author: "J.R.R. Tolkien", pages: 310, read: true, uniqueID: crypto.randomUUID() },
+  { title: "Dune", author: "Frank Herbert", pages: 412, read: false, uniqueID: crypto.randomUUID() },
+  { title: "1984", author: "George Orwell", pages: 328, read: true, uniqueID: crypto.randomUUID()}
 
 ];
 
-const myLibraryArray = [
-    ["The Hobbit", "J.R.R. Tolkien", 310, false, crypto.randomUUID()],
-    ["Dune", "Frank Herbert", 412, false, crypto.randomUUID()],
-    ["1984", "George Orwell", 328, false, crypto.randomUUID()]
-]
-
-function Book() {
+function Book(title, author, pages, read) {
     //constructor
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.uniqueID = crypto.randomUUID();
+    
+    this.info = function() {
+        return `${this.title} by ${this.author}. ${this.pages}, ${this.read} read`
+    }
 }
 
-function addBookToLibrary() {
+
+function addBookToLibrary(inpBook, inpAuthor, inpPages, inpRead) {
     //take params, create a book then store it in an array
+    let newBook = new Book(inpBook, inpAuthor, inpPages, inpRead);
+    myLibraryArray.push(newBook);
 }
 
-let myObjStr = JSON.stringify(myLibraryObj[0,1,2].author );
+addBookToLibrary("The Illiad", "Homer", 610, true);
 
-for (const i in myLibraryObj){
-    const obj = myLibraryObj[i]
+// let myObjStr = JSON.stringify(myLibraryArray[0,1,2].author );
+
+
+//LOOP THROUGH LIBRARY OF INTIAL BOOKS and DISPLAY THEM ON SCREEN
+for (const i in myLibraryArray){
+    const obj = myLibraryArray[i]
     for (const [_key, values] of Object.entries(obj)){
-        console.log(_key, values)
+        // console.log(_key, values)
         displayText.textContent += (_key) + ": " + (values) + "\n"
 
     }
@@ -35,4 +45,4 @@ for (const i in myLibraryObj){
 
 }
 
-// displayText.textContent = myLibraryObj.read;
+// displayText.textContent = myLibraryArray.read;
