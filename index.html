@@ -10,11 +10,10 @@
 <body>
     <div class="displayText"></div>
 
-    <button command="show-modal" commandfor="my-dialog">Open dialog</button>
+    <button id="openDialogBtn">Click to add a book</button>
 
-    <dialog id="my-dialog">
-        <p>This dialog was opened using an invoker command.</p>
-        <button commandfor="my-dialog" command="close">Close</button>
+    <dialog id="userDialogEntry">
+
         <form id="libraryEntry">
             <label for="bookName"> Enter Book: </label>
             <input type="text" id="bookName" required/>
@@ -28,8 +27,11 @@
             <label for="bookRead"> Completed?: </label>
             <input type="checkbox" id="bookRead" required/>
 
-
+            <button type ="submit" form="libraryEntry" id="submitBtn">Add book</button>
+        
         </form>
+        <button id="closeDialogBtn">Close</button>
+
     </dialog>
     
 </body>

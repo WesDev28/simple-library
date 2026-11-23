@@ -1,4 +1,8 @@
-const displayText = document.querySelector(".displayText")
+const displayText = document.querySelector(".displayText");
+
+const dialog = document.querySelector("dialog");
+const showBtn = document.querySelector("#openDialogBtn");
+const closeBtn = document.querySelector("#closeDialogBtn");
 
 let myLibraryArray = [
 
@@ -30,6 +34,11 @@ function addBookToLibrary(inpBook, inpAuthor, inpPages, inpRead) {
 
 addBookToLibrary("The Illiad", "Homer", 610, true);
 
+
+
+
+
+
 // let myObjStr = JSON.stringify(myLibraryArray[0,1,2].author );
 
 
@@ -45,4 +54,10 @@ for (const i in myLibraryArray){
 
 }
 
-// displayText.textContent = myLibraryArray.read;
+showBtn.addEventListener("click", () => {
+    dialog.showModal();
+})
+
+closeBtn.addEventListener("click", () => {
+    dialog.close();
+})
