@@ -55,7 +55,7 @@ for (const i in myLibraryArray){
 }
 
 showBtn.addEventListener("click", () => {
-    dialog.showModal();
+    dialog.show();
 })
 
 closeBtn.addEventListener("click", () => {

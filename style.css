@@ -8,3 +8,34 @@ body {
     color: #fff;
     white-space: pre-line;
 }
+
+.container{
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+
+}
+
+.displayText {
+    grid-column: 1 / 2;
+
+}
+
+
+#openDialogBtn {
+    background: cyan;
+    font-family: monospace;
+    font-size: 24px;
+    font-weight: 700;
+    height: 5rem;
+    width: 100%;
+    border-radius: 1rem;
+    grid-column: 2 / 3;
+}
+
+#userDialogEntry {
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    grid-column: 2 / 3;
+    position: static;
+}

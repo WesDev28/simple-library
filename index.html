@@ -8,31 +8,37 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="displayText"></div>
+    <div class="container">
+        <div class="displayText"></div>
 
-    <button id="openDialogBtn">Click to add a book</button>
+        <div class="entryWrapper">
+            <button id="openDialogBtn">Click to add a book</button>
 
-    <dialog id="userDialogEntry">
+            <dialog id="userDialogEntry">
 
-        <form id="libraryEntry">
-            <label for="bookName"> Enter Book: </label>
-            <input type="text" id="bookName" required/>
+                <form id="libraryEntry">
+                    <label for="bookName"> Enter Book: </label>
+                    <input type="text" id="bookName" required/>
 
-            <label for="bookAuthor"> Enter Author: </label>
-            <input type="text" id="bookAuthor" required/>
+                    <label for="bookAuthor"> Enter Author: </label>
+                    <input type="text" id="bookAuthor" required/>
 
-            <label for="bookPages"> Enter Page Length: </label>
-            <input type="number" id="bookPages" required/>
+                    <label for="bookPages"> Enter Page Length: </label>
+                    <input type="number" id="bookPages" required/>
 
-            <label for="bookRead"> Completed?: </label>
-            <input type="checkbox" id="bookRead" required/>
+                    <label for="bookRead"> Completed?: </label>
+                    <input type="checkbox" id="bookRead" required/>
 
-            <button type ="submit" form="libraryEntry" id="submitBtn">Add book</button>
-        
-        </form>
-        <button id="closeDialogBtn">Close</button>
+                    <button type ="submit" form="libraryEntry" id="submitBtn">Add book</button>
+                
+                </form>
+                <button id="closeDialogBtn">Close</button>
 
-    </dialog>
+            </dialog>
+        </div>
+
+    </div>
+
     
 </body>
 </html>
