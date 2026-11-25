@@ -25,6 +25,16 @@ body {
 
 }
 
+.bookCard {
+    background: white;
+    color:black;
+    margin: 1rem;
+    white-space: pre-line;
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.5);
+
+}
+
 
 #openDialogBtn {
     background: cyan;

@@ -37,15 +37,17 @@ function addBookToLibrary(inpBook, inpAuthor, inpPages, inpRead) {
 
 function displayBooks() {
     //LOOP THROUGH LIBRARY OF INTIAL BOOKS and DISPLAY THEM ON SCREEN
-    displayText.textContent = "";
+    //displayText.textContent = "";
+    displayText.replaceChildren();
     for (const i in myLibraryArray){
+        const newBookCard = document.createElement("div");
+        newBookCard.classList.add("bookCard");
+        console.log(i)
         const obj = myLibraryArray[i]
         for (const [_key, values] of Object.entries(obj)){
-            // console.log(_key, values)
-            displayText.textContent += (_key) + ": " + (values) + "\n"
-
+            newBookCard.textContent += (_key) + ": " + (values) + "\n"
+            displayText.appendChild(newBookCard);
         }
-        displayText.textContent += "\n"
     }
 }
 
