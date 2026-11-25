@@ -37,6 +37,7 @@ function addBookToLibrary(inpBook, inpAuthor, inpPages, inpRead) {
 
 function displayBooks() {
     //LOOP THROUGH LIBRARY OF INTIAL BOOKS and DISPLAY THEM ON SCREEN
+    displayText.textContent = "";
     for (const i in myLibraryArray){
         const obj = myLibraryArray[i]
         for (const [_key, values] of Object.entries(obj)){
@@ -56,20 +57,14 @@ closeBtn.addEventListener("click", () => {
     dialog.close();
 })
 
-// submitBtn.addEventListener("click", (event) => {
-//     event.preventDefault();
-//     const bookTitle = event.currentTarget.form.bookName.value;
-//     console.log(bookTitle);
-
-// })
-
 formField.addEventListener("submit", () => {
     event.preventDefault();
     const bookTitle = event.currentTarget.bookName.value;
     const bookAuthor = event.currentTarget.bookAuthor.value;
     const bookPages = event.currentTarget.bookPages.value;
-    const bookRead = event.currentTarget.bookRead.value;
-    console.table(bookTitle, bookAuthor, bookPages, bookRead);
+    const bookRead = event.currentTarget.bookRead.checked;
+    addBookToLibrary(bookTitle,bookAuthor,bookPages,bookRead);
+    displayBooks();
 })
 
 addBookToLibrary("The Illiad", "Homer", 610, true);
