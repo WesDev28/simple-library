@@ -4,6 +4,9 @@ const dialog = document.querySelector("dialog");
 const showBtn = document.querySelector("#openDialogBtn");
 const closeBtn = document.querySelector("#closeDialogBtn");
 
+const formField = document.querySelector("#libraryEntry")
+const submitBtn = document.querySelector("#submitBtn");
+
 let myLibraryArray = [
 
   { title: "The Hobbit", author: "J.R.R. Tolkien", pages: 310, read: true, uniqueID: crypto.randomUUID() },
@@ -51,6 +54,22 @@ showBtn.addEventListener("click", () => {
 
 closeBtn.addEventListener("click", () => {
     dialog.close();
+})
+
+// submitBtn.addEventListener("click", (event) => {
+//     event.preventDefault();
+//     const bookTitle = event.currentTarget.form.bookName.value;
+//     console.log(bookTitle);
+
+// })
+
+formField.addEventListener("submit", () => {
+    event.preventDefault();
+    const bookTitle = event.currentTarget.bookName.value;
+    const bookAuthor = event.currentTarget.bookAuthor.value;
+    const bookPages = event.currentTarget.bookPages.value;
+    const bookRead = event.currentTarget.bookRead.value;
+    console.table(bookTitle, bookAuthor, bookPages, bookRead);
 })
 
 addBookToLibrary("The Illiad", "Homer", 610, true);
