@@ -32,26 +32,17 @@ function addBookToLibrary(inpBook, inpAuthor, inpPages, inpRead) {
     myLibraryArray.push(newBook);
 }
 
-addBookToLibrary("The Illiad", "Homer", 610, true);
+function displayBooks() {
+    //LOOP THROUGH LIBRARY OF INTIAL BOOKS and DISPLAY THEM ON SCREEN
+    for (const i in myLibraryArray){
+        const obj = myLibraryArray[i]
+        for (const [_key, values] of Object.entries(obj)){
+            // console.log(_key, values)
+            displayText.textContent += (_key) + ": " + (values) + "\n"
 
-
-
-
-
-
-// let myObjStr = JSON.stringify(myLibraryArray[0,1,2].author );
-
-
-//LOOP THROUGH LIBRARY OF INTIAL BOOKS and DISPLAY THEM ON SCREEN
-for (const i in myLibraryArray){
-    const obj = myLibraryArray[i]
-    for (const [_key, values] of Object.entries(obj)){
-        // console.log(_key, values)
-        displayText.textContent += (_key) + ": " + (values) + "\n"
-
+        }
+        displayText.textContent += "\n"
     }
-    displayText.textContent += "\n"
-
 }
 
 showBtn.addEventListener("click", () => {
@@ -61,3 +52,8 @@ showBtn.addEventListener("click", () => {
 closeBtn.addEventListener("click", () => {
     dialog.close();
 })
+
+addBookToLibrary("The Illiad", "Homer", 610, true);
+displayBooks()
+
+
