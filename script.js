@@ -7,13 +7,7 @@ const closeBtn = document.querySelector("#closeDialogBtn");
 const formField = document.querySelector("#libraryForm")
 const submitBtn = document.querySelector("#submitBtn");
 
-let myLibraryArray = [
-
-  { title: "The Hobbit", author: "J.R.R. Tolkien", pages: 310, read: true, uniqueID: crypto.randomUUID() },
-  { title: "Dune", author: "Frank Herbert", pages: 412, read: false, uniqueID: crypto.randomUUID() },
-  { title: "1984", author: "George Orwell", pages: 328, read: true, uniqueID: crypto.randomUUID()}
-
-];
+let myLibraryArray = [];
 
 function Book(title, author, pages, read) {
     //constructor
@@ -24,7 +18,12 @@ function Book(title, author, pages, read) {
     this.uniqueID = crypto.randomUUID();
     
     this.info = function() {
-        return `${this.title} by ${this.author}. ${this.pages}, ${this.read} read`
+        if (this.read){
+            return `${this.title} by ${this.author}. ${this.pages} pages, completed`
+        }
+        else {
+            return `${this.title} by ${this.author}. ${this.pages} pages, on the list`
+        }
     }
 }
 
@@ -44,10 +43,15 @@ function displayBooks() {
         newBookCard.classList.add("bookCard");
         console.log(i)
         const obj = myLibraryArray[i]
-        for (const [_key, values] of Object.entries(obj)){
-            newBookCard.textContent += (_key) + ": " + (values) + "\n"
-            displayText.appendChild(newBookCard);
-        }
+        console.log(obj);
+        console.log(obj.info())
+        newBookCard.textContent = obj.info();
+        displayText.appendChild(newBookCard);
+        // for (const [_key, values] of Object.entries(obj)){
+        //     newBookCard.textContent 
+        //     newBookCard.textContent += (_key) + ": " + (values) + "\n"
+        //     displayText.appendChild(newBookCard);
+        // }
     }
 }
 
@@ -69,7 +73,11 @@ formField.addEventListener("submit", (event) => {
     displayBooks();
 })
 
-addBookToLibrary("The Illiad", "Homer", 610, true);
+
+addBookToLibrary("The Hobbit", "J.R.R Tolkien", 310, true);
+addBookToLibrary("Dune", "Frank Herbert", 412, false);
+addBookToLibrary("1984", "George Orwell", 328, true);
+
 displayBooks()
 
 
