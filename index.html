@@ -14,9 +14,10 @@
         <div class="entryWrapper">
             <button id="openDialogBtn">Click to add a book</button>
 
-            <dialog id="userDialogEntry">
+            <dialog id="userDialog">
+                <button id="closeDialogBtn">Close</button>
 
-                <form id="libraryEntry">
+                <form id="libraryForm">
                     <label for="bookName"> Enter Book: </label>
                     <input type="text" id="bookName" value = "Casino Royale" required/>
 
@@ -29,10 +30,9 @@
                     <label for="bookRead"> Completed?: </label>
                     <input type="checkbox" id="bookRead"/>
 
-                    <button type ="submit" form="libraryEntry" id="submitBtn">Add book</button>
+                    <button type ="submit" form="libraryForm" id="submitBtn">Add book</button>
                 
                 </form>
-                <button id="closeDialogBtn">Close</button>
 
             </dialog>
         </div>

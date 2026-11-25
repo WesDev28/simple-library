@@ -4,7 +4,7 @@ const dialog = document.querySelector("dialog");
 const showBtn = document.querySelector("#openDialogBtn");
 const closeBtn = document.querySelector("#closeDialogBtn");
 
-const formField = document.querySelector("#libraryEntry")
+const formField = document.querySelector("#libraryForm")
 const submitBtn = document.querySelector("#submitBtn");
 
 let myLibraryArray = [
@@ -57,7 +57,7 @@ closeBtn.addEventListener("click", () => {
     dialog.close();
 })
 
-formField.addEventListener("submit", () => {
+formField.addEventListener("submit", (event) => {
     event.preventDefault();
     const bookTitle = event.currentTarget.bookName.value;
     const bookAuthor = event.currentTarget.bookAuthor.value;
