@@ -7,6 +7,7 @@ const closeBtn = document.querySelector("#closeDialogBtn");
 const formField = document.querySelector("#libraryForm")
 const submitBtn = document.querySelector("#submitBtn");
 
+
 let myLibraryArray = [];
 
 function Book(title, author, pages, read) {
@@ -39,12 +40,13 @@ function displayBooks() {
     //displayText.textContent = "";
     displayText.replaceChildren();
     for (const i in myLibraryArray){
+        const obj = myLibraryArray[i];
         const newBookCard = document.createElement("div");
         newBookCard.classList.add("bookCard");
-        console.log(i)
-        const obj = myLibraryArray[i]
-        console.log(obj);
-        console.log(obj.info())
+
+        newBookCard.id = obj.uniqueID;
+
+
         newBookCard.textContent = obj.info();
         addRemoveBookBtn(newBookCard);
         displayText.appendChild(newBookCard);
@@ -56,13 +58,23 @@ function displayBooks() {
     }
 }
 
-
 function addRemoveBookBtn(card){
     const removeBookBtn = document.createElement("button");
     removeBookBtn.textContent = "X";
     removeBookBtn.classList.add("removeBtn");
     card.appendChild(removeBookBtn)
 }
+
+function selectBookCard() {
+    document.querySelectorAll(".bookCard").forEach(card => {
+        const currentBtn = card.querySelector(".removeBtn");
+        currentBtn.addEventListener("click", (event) => handleClick(card,currentBtn,event))  
+    })
+}
+
+function handleClick(card, button, event) {
+}
+
 
 showBtn.addEventListener("click", () => {
     dialog.show();
@@ -80,6 +92,7 @@ formField.addEventListener("submit", (event) => {
     const bookRead = event.currentTarget.bookRead.checked;
     addBookToLibrary(bookTitle,bookAuthor,bookPages,bookRead);
     displayBooks();
+    selectBookCard();
 })
 
 
@@ -87,6 +100,7 @@ addBookToLibrary("The Hobbit", "J.R.R Tolkien", 310, true);
 addBookToLibrary("Dune", "Frank Herbert", 412, false);
 addBookToLibrary("1984", "George Orwell", 328, true);
 
-displayBooks()
+displayBooks();
+selectBookCard();
 
 
