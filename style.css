@@ -17,11 +17,6 @@ body {
     /* grid-column: 1 / 2; */
 }
 
-.container{
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-}
-
 .bookCard {
     background: white;
     color:black;
@@ -31,6 +26,18 @@ body {
     white-space: pre-line;
     border-radius: 0.5rem;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    display:flex;
+}
+
+.removeBtn {
+    background: pink;
+    padding: 0.5rem;
+    margin-left: auto;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 3fr 2fr;
 }
 
 #openDialogBtn {
@@ -51,6 +58,7 @@ body {
     margin: 1rem;
     padding: 1rem;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    border-radius: 16px;
     grid-column: 2 / 3;
     position: static;
     width: auto;

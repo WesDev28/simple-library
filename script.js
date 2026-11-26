@@ -46,6 +46,7 @@ function displayBooks() {
         console.log(obj);
         console.log(obj.info())
         newBookCard.textContent = obj.info();
+        addRemoveBookBtn(newBookCard);
         displayText.appendChild(newBookCard);
         // for (const [_key, values] of Object.entries(obj)){
         //     newBookCard.textContent 
@@ -53,6 +54,14 @@ function displayBooks() {
         //     displayText.appendChild(newBookCard);
         // }
     }
+}
+
+
+function addRemoveBookBtn(card){
+    const removeBookBtn = document.createElement("button");
+    removeBookBtn.textContent = "X";
+    removeBookBtn.classList.add("removeBtn");
+    card.appendChild(removeBookBtn)
 }
 
 showBtn.addEventListener("click", () => {
