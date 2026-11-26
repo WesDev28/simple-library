@@ -14,7 +14,6 @@ body {
     font-size: 24px;
     color: #fff;
     white-space: pre-line;
-    /* grid-column: 1 / 2; */
 }
 
 .bookCard {
@@ -29,12 +28,13 @@ body {
     display:flex;
 }
 
-/* .removeBtn {
-    background: #f8d7da;
-    border-radius: 50%;
-    padding: 0.75rem;
-    margin-left: auto;
-} */
+.readStatus {
+    background: cyan;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin-left: 1rem;
+}
 
 .removeBtn {
     width: 28px;
@@ -46,10 +46,9 @@ body {
     font-size: 1.2rem;
     line-height: 1;
     cursor: pointer;
-    box-shadow: 0 2px 0 #d9a4ab;            /* solid "edge" under the button */
-    margin-left: auto;
+    box-shadow: 0 2px 0 #d9a4ab;
+    margin-left: auto;           
 }
-
 
 .removeBtn:hover {
     background: #dc3545;
@@ -121,7 +120,6 @@ input[type="checkbox"] {
     grid-column: 1 / 3;
     margin: 1rem 0;
     padding: 0.5rem;
-    border-radius: 8px;
-    
+    border-radius: 8px; 
 }
 

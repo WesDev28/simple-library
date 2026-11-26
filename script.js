@@ -28,6 +28,9 @@ function Book(title, author, pages, read) {
     }
 }
 
+Book.prototype.toggleRead = function() {
+    this.read = !this.read;
+}
 
 function addBookToLibrary(inpBook, inpAuthor, inpPages, inpRead) {
     //take params, create a book then store it in an array
@@ -44,9 +47,18 @@ function displayBooks() {
         newBookCard.dataset.id = obj.uniqueID;
 
         newBookCard.textContent = obj.info();
+        addReadStatus(newBookCard);
         addRemoveBookBtn(newBookCard);
         displayText.appendChild(newBookCard);
     }
+    selectBookCard();
+}
+
+function addReadStatus(card) {
+    const readStatus = document.createElement("button")
+    readStatus.textContent = "Switch Status"
+    readStatus.classList.add("readStatus");
+    card.appendChild(readStatus)
 }
 
 function addRemoveBookBtn(card){
@@ -59,12 +71,24 @@ function addRemoveBookBtn(card){
 function selectBookCard() {
     document.querySelectorAll(".bookCard").forEach(card => {
         const currentID = card.dataset.id;
-        const currentBtn = card.querySelector(".removeBtn");
-        currentBtn.addEventListener("click", () => handleClick(currentID))  
+        const currentRemoveBtn = card.querySelector(".removeBtn");
+        const currentReadStatus = card.querySelector(".readStatus")
+        currentRemoveBtn.addEventListener("click", () => handleRemoveClick(currentID))  
+        currentReadStatus.addEventListener("click", () => handleReadStatus(currentID))
     })
 }
 
-function handleClick(currentID) {
+function handleReadStatus (currentID) {
+    for (let i =0; i < myLibraryArray.length; i++){
+        if (myLibraryArray[i].uniqueID === currentID){
+            myLibraryArray[i].toggleRead();
+        }
+    }
+    displayBooks();
+}
+
+
+function handleRemoveClick(currentID) {
     for (let i = 0; i < myLibraryArray.length; i++){
         if (myLibraryArray[i].uniqueID === currentID){
             myLibraryArray.splice(i,1);
@@ -72,7 +96,6 @@ function handleClick(currentID) {
         }
     }
     displayBooks();
-    selectBookCard();
 }
 
 
@@ -88,11 +111,11 @@ formField.addEventListener("submit", (event) => {
     event.preventDefault();
     const bookTitle = event.currentTarget.bookName.value;
     const bookAuthor = event.currentTarget.bookAuthor.value;
-    const bookPages = event.currentTarget.bookPages.value;
+    const bookPages = Number(event.currentTarget.bookPages.value);
     const bookRead = event.currentTarget.bookRead.checked;
     addBookToLibrary(bookTitle,bookAuthor,bookPages,bookRead);
     displayBooks();
-    selectBookCard();
+    formField.reset();
 })
 
 
@@ -101,6 +124,5 @@ addBookToLibrary("Dune", "Frank Herbert", 412, false);
 addBookToLibrary("1984", "George Orwell", 328, true);
 
 displayBooks();
-selectBookCard();
 
 
