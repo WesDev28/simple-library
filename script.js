@@ -37,24 +37,15 @@ function addBookToLibrary(inpBook, inpAuthor, inpPages, inpRead) {
 
 function displayBooks() {
     //LOOP THROUGH LIBRARY OF INTIAL BOOKS and DISPLAY THEM ON SCREEN
-    //displayText.textContent = "";
     displayText.replaceChildren();
-    for (const i in myLibraryArray){
-        const obj = myLibraryArray[i];
+    for (const obj of myLibraryArray){
         const newBookCard = document.createElement("div");
         newBookCard.classList.add("bookCard");
-
-        newBookCard.id = obj.uniqueID;
-
+        newBookCard.dataset.id = obj.uniqueID;
 
         newBookCard.textContent = obj.info();
         addRemoveBookBtn(newBookCard);
         displayText.appendChild(newBookCard);
-        // for (const [_key, values] of Object.entries(obj)){
-        //     newBookCard.textContent 
-        //     newBookCard.textContent += (_key) + ": " + (values) + "\n"
-        //     displayText.appendChild(newBookCard);
-        // }
     }
 }
 
@@ -67,12 +58,21 @@ function addRemoveBookBtn(card){
 
 function selectBookCard() {
     document.querySelectorAll(".bookCard").forEach(card => {
+        const currentID = card.dataset.id;
         const currentBtn = card.querySelector(".removeBtn");
-        currentBtn.addEventListener("click", (event) => handleClick(card,currentBtn,event))  
+        currentBtn.addEventListener("click", () => handleClick(currentID))  
     })
 }
 
-function handleClick(card, button, event) {
+function handleClick(currentID) {
+    for (let i = 0; i < myLibraryArray.length; i++){
+        if (myLibraryArray[i].uniqueID === currentID){
+            myLibraryArray.splice(i,1);
+            break;
+        }
+    }
+    displayBooks();
+    selectBookCard();
 }
 
 
