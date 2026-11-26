@@ -29,10 +29,31 @@ body {
     display:flex;
 }
 
-.removeBtn {
-    background: pink;
-    padding: 0.5rem;
+/* .removeBtn {
+    background: #f8d7da;
+    border-radius: 50%;
+    padding: 0.75rem;
     margin-left: auto;
+} */
+
+.removeBtn {
+    width: 28px;
+    height: 28px;
+    border: none; 
+    border-radius: 50%;
+    background-color: #f8d7da;
+    color: #b02a37;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 2px 0 #d9a4ab;            /* solid "edge" under the button */
+    margin-left: auto;
+}
+
+
+.removeBtn:hover {
+    background: #dc3545;
+    color: white;
 }
 
 .container{

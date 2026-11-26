@@ -51,7 +51,7 @@ function displayBooks() {
 
 function addRemoveBookBtn(card){
     const removeBookBtn = document.createElement("button");
-    removeBookBtn.textContent = "X";
+    removeBookBtn.textContent = "\u2716";
     removeBookBtn.classList.add("removeBtn");
     card.appendChild(removeBookBtn)
 }
